@@ -8,13 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		7B093D891FCD3CCD001887F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B093D881FCD3CCD001887F0 /* AppDelegate.swift */; };
-		7B093D8B1FCD3CCD001887F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B093D8A1FCD3CCD001887F0 /* ViewController.swift */; };
+		7B093D8B1FCD3CCD001887F0 /* MovieFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B093D8A1FCD3CCD001887F0 /* MovieFeedViewController.swift */; };
 		7B093D8E1FCD3CCE001887F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B093D8C1FCD3CCE001887F0 /* Main.storyboard */; };
 		7B093D911FCD3CCE001887F0 /* ProtocolBasedNetworkingTutorialFinal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7B093D8F1FCD3CCE001887F0 /* ProtocolBasedNetworkingTutorialFinal.xcdatamodeld */; };
 		7B093D931FCD3CCE001887F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B093D921FCD3CCE001887F0 /* Assets.xcassets */; };
 		7B093D961FCD3CCF001887F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B093D941FCD3CCF001887F0 /* LaunchScreen.storyboard */; };
 		7B093DA11FCD3CD0001887F0 /* ProtocolBasedNetworkingTutorialFinalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B093DA01FCD3CD0001887F0 /* ProtocolBasedNetworkingTutorialFinalTests.swift */; };
 		7B093DAC1FCD3CD0001887F0 /* ProtocolBasedNetworkingTutorialFinalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B093DAB1FCD3CD0001887F0 /* ProtocolBasedNetworkingTutorialFinalUITests.swift */; };
+		7B093DBF1FCD407A001887F0 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B093DBE1FCD407A001887F0 /* Endpoint.swift */; };
+		7B093DC11FCD45AB001887F0 /* GenericAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B093DC01FCD45AB001887F0 /* GenericAPIClient.swift */; };
+		7B093DC31FCD45D0001887F0 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B093DC21FCD45D0001887F0 /* Result.swift */; };
+		7B093DC51FCD46D6001887F0 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B093DC41FCD46D6001887F0 /* Movie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +41,7 @@
 /* Begin PBXFileReference section */
 		7B093D851FCD3CCD001887F0 /* ProtocolBasedNetworkingTutorialFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProtocolBasedNetworkingTutorialFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B093D881FCD3CCD001887F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7B093D8A1FCD3CCD001887F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7B093D8A1FCD3CCD001887F0 /* MovieFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFeedViewController.swift; sourceTree = "<group>"; };
 		7B093D8D1FCD3CCE001887F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7B093D901FCD3CCE001887F0 /* ProtocolBasedNetworkingTutorialFinal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ProtocolBasedNetworkingTutorialFinal.xcdatamodel; sourceTree = "<group>"; };
 		7B093D921FCD3CCE001887F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +53,10 @@
 		7B093DA71FCD3CD0001887F0 /* ProtocolBasedNetworkingTutorialFinalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProtocolBasedNetworkingTutorialFinalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B093DAB1FCD3CD0001887F0 /* ProtocolBasedNetworkingTutorialFinalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolBasedNetworkingTutorialFinalUITests.swift; sourceTree = "<group>"; };
 		7B093DAD1FCD3CD0001887F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B093DBE1FCD407A001887F0 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		7B093DC01FCD45AB001887F0 /* GenericAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAPIClient.swift; sourceTree = "<group>"; };
+		7B093DC21FCD45D0001887F0 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		7B093DC41FCD46D6001887F0 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +108,11 @@
 			isa = PBXGroup;
 			children = (
 				7B093D881FCD3CCD001887F0 /* AppDelegate.swift */,
-				7B093D8A1FCD3CCD001887F0 /* ViewController.swift */,
+				7B093DBD1FCD3F85001887F0 /* Networking */,
+				7B093DBC1FCD3F7E001887F0 /* Model */,
+				7B093DBB1FCD3F77001887F0 /* ViewModel */,
+				7B093DBA1FCD3F6F001887F0 /* View */,
+				7B093DB91FCD3F5F001887F0 /* Controller */,
 				7B093D8C1FCD3CCE001887F0 /* Main.storyboard */,
 				7B093D921FCD3CCE001887F0 /* Assets.xcassets */,
 				7B093D941FCD3CCF001887F0 /* LaunchScreen.storyboard */,
@@ -126,6 +138,46 @@
 				7B093DAD1FCD3CD0001887F0 /* Info.plist */,
 			);
 			path = ProtocolBasedNetworkingTutorialFinalUITests;
+			sourceTree = "<group>";
+		};
+		7B093DB91FCD3F5F001887F0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7B093D8A1FCD3CCD001887F0 /* MovieFeedViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7B093DBA1FCD3F6F001887F0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7B093DBB1FCD3F77001887F0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7B093DBC1FCD3F7E001887F0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7B093DC41FCD46D6001887F0 /* Movie.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7B093DBD1FCD3F85001887F0 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				7B093DBE1FCD407A001887F0 /* Endpoint.swift */,
+				7B093DC01FCD45AB001887F0 /* GenericAPIClient.swift */,
+				7B093DC21FCD45D0001887F0 /* Result.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,8 +314,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B093DC51FCD46D6001887F0 /* Movie.swift in Sources */,
+				7B093DC31FCD45D0001887F0 /* Result.swift in Sources */,
 				7B093D911FCD3CCE001887F0 /* ProtocolBasedNetworkingTutorialFinal.xcdatamodeld in Sources */,
-				7B093D8B1FCD3CCD001887F0 /* ViewController.swift in Sources */,
+				7B093D8B1FCD3CCD001887F0 /* MovieFeedViewController.swift in Sources */,
+				7B093DBF1FCD407A001887F0 /* Endpoint.swift in Sources */,
+				7B093DC11FCD45AB001887F0 /* GenericAPIClient.swift in Sources */,
 				7B093D891FCD3CCD001887F0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
