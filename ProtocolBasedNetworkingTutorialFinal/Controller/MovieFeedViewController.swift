@@ -20,6 +20,7 @@ class MovieFeedViewController: UIViewController {
             switch result {
             case .success(let movieFeedResult):
                 guard let movieResults = movieFeedResult?.results else { return }
+                print(movieResults)
             case .failure(let error):
                 print("the error \(error)")
             }

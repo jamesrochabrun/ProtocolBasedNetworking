@@ -29,16 +29,15 @@ enum APIError: Error {
 protocol APIClient {
     
     var session: URLSession { get }
-    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Decodable) -> T?, completion: @escaping (Result<T, APIError>) -> Void)
-    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Decodable) -> [T], completion: @escaping (Result<[T], APIError>) -> Void)
-    
+    func fetch<T: Decodable>(with request: URLRequest, decode: @escaping (Decodable) -> T?, completion: @escaping (Result<T, APIError>) -> Void)
+
 }
 
 extension APIClient {
     
     typealias JSONTaskCompletionHandler = (Decodable?, APIError?) -> Void
     
-    func jsonTask<T: Decodable>(with request: URLRequest, type: T.Type, completionHandler completion: @escaping JSONTaskCompletionHandler) -> URLSessionDataTask {
+    func decodingTask<T: Decodable>(with request: URLRequest, decodingType: T.Type, completionHandler completion: @escaping JSONTaskCompletionHandler) -> URLSessionDataTask {
        
         let task = session.dataTask(with: request) { data, response, error in
             
@@ -49,7 +48,7 @@ extension APIClient {
             if httpResponse.statusCode == 200 {
                 if let data = data {
                     do {
-                        let genericModel = try JSONDecoder().decode(T.self, from: data)
+                        let genericModel = try JSONDecoder().decode(decodingType, from: data)
                          completion(genericModel, nil)
                     } catch {
                         completion(nil, .jsonConversionFailure)
@@ -64,9 +63,9 @@ extension APIClient {
         return task
     }
     
-    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Decodable) -> T?, completion: @escaping (Result<T, APIError>) -> Void) {
+    func fetch<T: Decodable>(with request: URLRequest, decode: @escaping (Decodable) -> T?, completion: @escaping (Result<T, APIError>) -> Void) {
         
-        let task = jsonTask(with: request, type: T.self) { (json , error) in
+        let task = decodingTask(with: request, decodingType: T.self) { (json , error) in
             
             //MARK: change to main queue
             DispatchQueue.main.async {
@@ -78,32 +77,7 @@ extension APIClient {
                     }
                     return
                 }
-                if let value = parse(json) {
-                    completion(.success(value))
-                } else {
-                    completion(.failure(.jsonParsingFailure))
-                }
-            }
-        }
-        task.resume()
-    }
-    
-    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Decodable) -> [T], completion: @escaping (Result<[T], APIError>) -> Void) {
-        
-        let task = jsonTask(with: request, type: T.self) { (json , error) in
-
-            //MARK: change to main queue
-            DispatchQueue.main.async {
-                guard let json = json else {
-                    if let error = error {
-                        completion(Result.failure(error))
-                    } else {
-                        completion(Result.failure(.invalidData))
-                    }
-                    return
-                }
-                let value = parse(json)
-                if !value.isEmpty {
+                if let value = decode(json) {
                     completion(.success(value))
                 } else {
                     completion(.failure(.jsonParsingFailure))

@@ -26,7 +26,7 @@ class MovieClient: APIClient {
         let endpoint = movieFeedType
         let request = endpoint.request
         
-        fetch(with: request, parse: { json -> MovieFeedResult? in
+        fetch(with: request, decode: { json -> MovieFeedResult? in
             guard let movieFeedResult = json as? MovieFeedResult else { return  nil }
             return movieFeedResult
         }, completion: completion)
