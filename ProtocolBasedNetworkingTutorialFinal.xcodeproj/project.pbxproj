@@ -19,6 +19,7 @@
 		7B093DC11FCD45AB001887F0 /* GenericAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B093DC01FCD45AB001887F0 /* GenericAPIClient.swift */; };
 		7B093DC31FCD45D0001887F0 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B093DC21FCD45D0001887F0 /* Result.swift */; };
 		7B093DC51FCD46D6001887F0 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B093DC41FCD46D6001887F0 /* Movie.swift */; };
+		7B093DC71FCE696E001887F0 /* MovieClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B093DC61FCE696E001887F0 /* MovieClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		7B093DC01FCD45AB001887F0 /* GenericAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAPIClient.swift; sourceTree = "<group>"; };
 		7B093DC21FCD45D0001887F0 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		7B093DC41FCD46D6001887F0 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		7B093DC61FCE696E001887F0 /* MovieClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 				7B093DBE1FCD407A001887F0 /* Endpoint.swift */,
 				7B093DC01FCD45AB001887F0 /* GenericAPIClient.swift */,
 				7B093DC21FCD45D0001887F0 /* Result.swift */,
+				7B093DC61FCE696E001887F0 /* MovieClient.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				7B093DC51FCD46D6001887F0 /* Movie.swift in Sources */,
 				7B093DC31FCD45D0001887F0 /* Result.swift in Sources */,
 				7B093D911FCD3CCE001887F0 /* ProtocolBasedNetworkingTutorialFinal.xcdatamodeld in Sources */,
+				7B093DC71FCE696E001887F0 /* MovieClient.swift in Sources */,
 				7B093D8B1FCD3CCD001887F0 /* MovieFeedViewController.swift in Sources */,
 				7B093DBF1FCD407A001887F0 /* Endpoint.swift in Sources */,
 				7B093DC11FCD45AB001887F0 /* GenericAPIClient.swift in Sources */,

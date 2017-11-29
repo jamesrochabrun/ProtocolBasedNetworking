@@ -12,7 +12,6 @@ protocol Endpoint {
     
     var base: String { get }
     var path: String { get }
-    var apiKey: String { get }
 }
 
 extension Endpoint {
@@ -20,7 +19,8 @@ extension Endpoint {
     var urlComponents: URLComponents {
         var components = URLComponents(string: base)!
         components.path = path
-        components.path = apiKey
+        
+        print("KMCOMPONENTS \(components)")
         return components
     }
     
@@ -44,13 +44,9 @@ extension MovieFeed: Endpoint {
     
     var path: String {
         switch self {
-        case .nowPlaying: return "/movie/now_playing?"
-        case .topRated: return "/movie/top_rated?"
+        case .nowPlaying: return "/movie/now_playing" + "?api_key=34a92f7d77a168fdcd9a46ee1863edf1"
+        case .topRated: return "/movie/top_rated" + "?api_key=34a92f7d77a168fdcd9a46ee1863edf1"
         }
-    }
-    
-    var apiKey: String {
-        return "api_key=34a92f7d77a168fdcd9a46ee1863edf1"
     }
 }
 

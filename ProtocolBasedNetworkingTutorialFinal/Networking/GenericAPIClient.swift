@@ -29,16 +29,16 @@ enum APIError: Error {
 protocol APIClient {
     
     var session: URLSession { get }
-    func fetch<T: JSONDecoder>(with request: URLRequest, parse: @escaping (JSONDecoder) -> T?, completion: @escaping (Result<T, APIError>) -> Void)
-    func fetch<T: JSONDecoder>(with request: URLRequest, parse: @escaping (JSONDecoder) -> [T], completion: @escaping (Result<[T], APIError>) -> Void)
+    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Decodable) -> T?, completion: @escaping (Result<T, APIError>) -> Void)
+    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Decodable) -> [T], completion: @escaping (Result<[T], APIError>) -> Void)
     
 }
 
 extension APIClient {
     
-    typealias JSONTaskCompletionHandler = (JSONDecoder?, APIError?) -> Void
+    typealias JSONTaskCompletionHandler = (Decodable?, APIError?) -> Void
     
-    func jsonTask<T: JSONDecoder>(with request: URLRequest, type: T.Type, completionHandler completion: @escaping (JSONDecoder?, APIError?) -> Void) -> URLSessionDataTask {
+    func jsonTask<T: Decodable>(with request: URLRequest, type: T.Type, completionHandler completion: @escaping JSONTaskCompletionHandler) -> URLSessionDataTask {
        
         let task = session.dataTask(with: request) { data, response, error in
             
@@ -49,8 +49,8 @@ extension APIClient {
             if httpResponse.statusCode == 200 {
                 if let data = data {
                     do {
-                        let genericModel = try JSONDecoder().decode(Movie.self, from: data)
-                       //   completion(genericModel, nil)
+                        let genericModel = try JSONDecoder().decode(T.self, from: data)
+                         completion(genericModel, nil)
                     } catch {
                         completion(nil, .jsonConversionFailure)
                     }
@@ -64,7 +64,7 @@ extension APIClient {
         return task
     }
     
-    func fetch<T: JSONDecoder>(with request: URLRequest, parse: @escaping (JSONDecoder) -> T?, completion: @escaping (Result<T, APIError>) -> Void) {
+    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Decodable) -> T?, completion: @escaping (Result<T, APIError>) -> Void) {
         
         let task = jsonTask(with: request, type: T.self) { (json , error) in
             
@@ -88,10 +88,10 @@ extension APIClient {
         task.resume()
     }
     
-    func fetch<T: JSONDecoder>(with request: URLRequest, parse: @escaping (JSONDecoder) -> [T], completion: @escaping (Result<[T], APIError>) -> Void) {
+    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Decodable) -> [T], completion: @escaping (Result<[T], APIError>) -> Void) {
         
-        let task = jsonTask(with: request) { (json , error) in
-            
+        let task = jsonTask(with: request, type: T.self) { (json , error) in
+
             //MARK: change to main queue
             DispatchQueue.main.async {
                 guard let json = json else {
@@ -103,7 +103,6 @@ extension APIClient {
                     return
                 }
                 let value = parse(json)
-                
                 if !value.isEmpty {
                     completion(.success(value))
                 } else {
