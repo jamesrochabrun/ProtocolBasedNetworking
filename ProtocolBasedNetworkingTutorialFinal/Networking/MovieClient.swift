@@ -20,13 +20,20 @@ class MovieClient: APIClient {
         self.init(configuration: .default)
     }
     
-    func getFeed(from movieFeedType: MovieFeed, completion: @escaping (Result<MovieFeedResult, APIError>) -> Void) {
+    //in the signature of the function in the success case we define the Class type thats is the generic one in the API
+    func getFeed(from movieFeedType: MovieFeed, completion: @escaping (Result<MovieFeedResult?, APIError>) -> Void) {
         
         let endpoint = movieFeedType
         let request = endpoint.request
         
-        fetch(with: request, parse: { json -> MovieFeedResult in
-            return json as! MovieFeedResult
+        fetch(with: request, parse: { json -> MovieFeedResult? in
+            guard let movieFeedResult = json as? MovieFeedResult else { return  nil }
+            return movieFeedResult
         }, completion: completion)
     }
 }
+
+
+
+
+
