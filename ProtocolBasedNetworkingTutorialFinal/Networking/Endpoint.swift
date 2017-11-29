@@ -16,11 +16,14 @@ protocol Endpoint {
 
 extension Endpoint {
     
+    var apiKey: String {
+        return "api_key=34a92f7d77a168fdcd9a46ee1863edf1"
+    }
+    
     var urlComponents: URLComponents {
         var components = URLComponents(string: base)!
         components.path = path
-        
-        print("KMCOMPONENTS \(components)")
+        components.query = apiKey
         return components
     }
     
@@ -39,13 +42,13 @@ enum MovieFeed {
 extension MovieFeed: Endpoint {
     
     var base: String {
-        return "https://api.themoviedb.org/3"
+        return "https://api.themoviedb.org"
     }
     
     var path: String {
         switch self {
-        case .nowPlaying: return "/movie/now_playing" + "?api_key=34a92f7d77a168fdcd9a46ee1863edf1"
-        case .topRated: return "/movie/top_rated" + "?api_key=34a92f7d77a168fdcd9a46ee1863edf1"
+        case .nowPlaying: return "/3/movie/now_playing"
+        case .topRated: return "/3/movie/top_rated"
         }
     }
 }

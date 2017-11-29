@@ -10,15 +10,23 @@ import UIKit
 
 class MovieFeedViewController: UIViewController {
     
-    lazy var client: MovieClient = {
-        return MovieClient(apiKey: "api_key=34a92f7d77a168fdcd9a46ee1863edf1")
-    }()
+    private let client = MovieClient()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        client.getFeed(from: .topRated) { result in
-            print("KMRESULT \(result)")
+        client.getFeed(from: .nowPlaying) { [weak self] result in
+      
+            switch result {
+            case .success(let movieResult):
+                
+                for t in movieResult.results {
+                    
+                    print("KMTITLE:  \(t.title)")
+                }
+            case .failure(let error):
+                print("the error \(error)")
+            }
         }
     }
 }

@@ -11,27 +11,22 @@ import Foundation
 class MovieClient: APIClient {
     
     let session: URLSession
-    private let apiKey : String
     
-    init(configuration: URLSessionConfiguration, apiKey: String) {
+    init(configuration: URLSessionConfiguration) {
         self.session = URLSession(configuration: configuration)
-        self.apiKey = apiKey
     }
     
-    convenience init(apiKey: String) {
-        self.init(configuration: .default, apiKey: apiKey)
+    convenience init() {
+        self.init(configuration: .default)
     }
     
-    func getFeed(from movieFeedType: MovieFeed, completion: @escaping (Result<[Movie], APIError>) -> Void) {
+    func getFeed(from movieFeedType: MovieFeed, completion: @escaping (Result<MovieFeedResult, APIError>) -> Void) {
         
         let endpoint = movieFeedType
         let request = endpoint.request
         
-        print("KMREQUEST \(request)")
-        
-        fetch(with: request, parse: { json -> [Movie] in
-            print("KMPRINT \(json)")
-            return []
+        fetch(with: request, parse: { json -> MovieFeedResult in
+            return json as! MovieFeedResult
         }, completion: completion)
     }
 }
